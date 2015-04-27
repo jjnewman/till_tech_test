@@ -22,16 +22,9 @@
     <% [0...@menu_items.count].each do |row| %>
     <% row.each do |n| %>
       <tr>
-      
       <td id="item<%=n%>"><%= @menu_items[n] %> </td>
       <td id="price<%=n%>"><%= @menu_prices[n].round(2) %></td>
-      
-
       <td><button type="button" class="button_add" name="button_add">+</button></td>
-
-
-
-
       <td><button type="button" class="button_rem">-</button></td>
       <td><button type="button" class="button_del">x</button></td>
       </tr>
@@ -58,32 +51,21 @@ Item price: <input type="text" name="price" id="price"><br>
 
 <script>
 
-
-
 $(document).ready(function(){
   var qty = 0
-
 
   $(".button_add").click(function(){
 
     var n = ($(this).closest('td').parent()[0].sectionRowIndex - 1 )/2;
     
     var item_name = $("#item"+n).text();
-    $("#item"+n).val("<%= params[:item_name] %>");
-
-// console.log($("#item"+n).val("<%= params[:item_name] %>"))
-
     var item_price = $("#price"+n).text()
-    // $("#price"+n).val("<%= params[:item_price] %>");
-
     qty = 1
 
     $('.receipt').append('<tr><td id=>' + item_name +
                         '</td><td>' + qty +
                         '</td><td>' + item_price +
                         '</tr>');
-
-
   });
 
 
@@ -99,10 +81,7 @@ $(document).ready(function(){
     });
 });
 
-
-
 </script>
-
 
 </body>
 </html>
